@@ -1,8 +1,16 @@
+/* eslint-disable no-labels */
 /* eslint-disable react-native/no-inline-styles */
 import 'react-native-gesture-handler';
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+import {
+  faTimes,
+  faInfoCircle,
+  faSlidersH,
+} from '@fortawesome/free-solid-svg-icons';
+
 import {
   View,
   Text,
@@ -15,49 +23,35 @@ import Header from './components/Header';
 import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 
-const Stack = createStackNavigator();
-
-// function LogoTitle() {
-//   return (
-//     <Image
-//       style={{width: 50, height: 50}}
-//       source={{
-//         uri: 'https://reactnative.dev/img/tiny_logo.png',
-//       }}
-//     />
-//   );
-// }
+const Tab = createBottomTabNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={{
-          title: 'BookWorm',
-          headerStyle: {
-            backgroundColor: 'darkslateblue',
+      <Tab.Navigator
+        screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color, size}) => {
+            let iconName;
+
+            if (route.name === 'Home') {
+              iconName = focused ? faInfoCircle : faSlidersH;
+            } else if (route.name === 'Profile') {
+              iconName = focused ? faInfoCircle : faSlidersH;
+            }
+
+            // You can return any component that you like here!
+            return (
+              <FontAwesomeIcon icon={iconName} size={size} color={color} />
+            );
           },
-          headerTintColor: '#fff',
-          headerTitleStyle: {
-            fontWeight: 'bold',
-          },
+        })}
+        tabBarOptions={{
+          activeTintColor: 'tomato',
+          inactiveTintColor: 'gray',
         }}>
-        <Stack.Screen
-          name="Header"
-          component={Header}
-          options={{
-            headerRight: () => (
-              <Button
-                onPress={() => alert('This is a button!')}
-                title="Info"
-                color="#fff"
-              />
-            ),
-          }}
-        />
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
-      </Stack.Navigator>
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Profile" component={ProfileScreen} />
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };
