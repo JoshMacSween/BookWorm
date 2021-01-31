@@ -1,20 +1,24 @@
+import 'react-native-gesture-handler';
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import {View, Text, TouchableOpacity, StyleSheet, Button} from 'react-native';
 import Header from './components/Header';
+import HomeScreen from './screens/HomeScreen';
+import ProfileScreen from './screens/ProfileScreen';
+
+const Stack = createStackNavigator();
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Header />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Welcome" component={Header} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 60,
-  },
-});
 
 export default App;
