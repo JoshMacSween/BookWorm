@@ -4,7 +4,9 @@ import 'react-native-gesture-handler';
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from '@react-navigation/stack';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
+
 import {
   faTimes,
   faInfoCircle,
@@ -24,6 +26,24 @@ import HomeScreen from './screens/HomeScreen';
 import ProfileScreen from './screens/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
+const HomeStack = createStackNavigator();
+const ProfileStack = createStackNavigator();
+
+function HomeStackScreen() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="Home" component={HomeScreen} />
+    </HomeStack.Navigator>
+  );
+}
+
+function ProfileStackScreen() {
+  return (
+    <HomeStack.Navigator>
+      <HomeStack.Screen name="Home" component={ProfileScreen} />
+    </HomeStack.Navigator>
+  );
+}
 
 const App = () => {
   return (
@@ -39,7 +59,6 @@ const App = () => {
               iconName = focused ? faInfoCircle : faSlidersH;
             }
 
-            // You can return any component that you like here!
             return (
               <FontAwesomeIcon icon={iconName} size={size} color={color} />
             );
@@ -49,8 +68,16 @@ const App = () => {
           activeTintColor: 'tomato',
           inactiveTintColor: 'gray',
         }}>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Profile" component={ProfileScreen} />
+        <Tab.Screen
+          name="Home"
+          component={HomeStackScreen}
+          options={{tabBarLabel: 'Home!'}}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={ProfileStackScreen}
+          options={{tabBarLabel: 'Profile!'}}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
