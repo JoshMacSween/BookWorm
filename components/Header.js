@@ -16,13 +16,13 @@ export default function Header({navigation}) {
 }
 
 const styles = StyleSheet.create({
-  header: {},
-  text: {
-    color: '#eee',
-    textAlign: 'center',
-    fontSize: 23,
-  },
-  btn: {
-    fontSize: 48,
-  },
+  // header: {},
+  // text: {
+  //   color: '#eee',
+  //   textAlign: 'center',
+  //   fontSize: 23,
+  // },
+  // btn: {
+  //   fontSize: 48,
+  // },
 });

@@ -14,8 +14,6 @@ export default function HomeScreen({navigation}) {
   ]);
   return (
     <View style={styles.center}>
-      <Text>Books</Text>
-
       <FlatList
         data={books}
         renderItem={({item}) => <ListItem book={item} />}
@@ -28,8 +26,9 @@ export default function HomeScreen({navigation}) {
 const styles = StyleSheet.create({
   center: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'center',
+    marginLeft: 10,
+    marginRight: 10,
   },
 });
 
