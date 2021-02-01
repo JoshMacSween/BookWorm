@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import {View, Text, Button, FlatList, StyleSheet} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faJedi} from '@fortawesome/free-solid-svg-icons';
-import ListItem from '../components/ListItem';
+import {ListItem, SearchBar} from '../components';
 
 export default function HomeScreen({navigation}) {
   const [books, setItems] = useState([
@@ -12,8 +12,10 @@ export default function HomeScreen({navigation}) {
     {id: 3, title: 'Invisibles', author: 'Grant Morrison'},
     {id: 4, title: 'Valis', author: 'Phillip K. Dick'},
   ]);
+
   return (
     <View style={styles.center}>
+      <SearchBar />
       <FlatList
         data={books}
         renderItem={({item}) => <ListItem book={item} />}
