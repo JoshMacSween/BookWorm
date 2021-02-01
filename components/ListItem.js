@@ -3,12 +3,17 @@ import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 export default function ListItem({book}) {
+  console.log(book);
   return (
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.listItemView}>
-        <Text style={styles.item}>
-          {book.title} - {book.author}
-        </Text>
+        {book && book.title ? (
+          <Text style={styles.item}>
+            {book.title}, {book.authors}
+          </Text>
+        ) : (
+          <Text style={styles.item}>No books yet!</Text>
+        )}
       </View>
     </TouchableOpacity>
   );
@@ -22,7 +27,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   item: {
-    fontSize: 18,
+    fontSize: 22,
     color: 'darkslateblue',
     fontWeight: 'bold',
   },
