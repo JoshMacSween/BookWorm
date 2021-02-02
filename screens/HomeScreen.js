@@ -9,11 +9,13 @@ import axios from 'axios';
 
 export default function HomeScreen({navigation}) {
   const [books, setBooks] = useState([{}]);
+  const [query, setQuery] = useState();
+  console.log(query);
 
   async function fetchBooks() {
     const result = await axios
       .get(
-        `https://www.googleapis.com/books/v1/volumes?q=vineland+inauthor:pynchon&key=${GOOGLE_API_KEY}`,
+        `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${GOOGLE_API_KEY}`,
       )
       .then((response) => {
         setBooks(response.data.items);
@@ -23,11 +25,13 @@ export default function HomeScreen({navigation}) {
   return (
     <View style={styles.center}>
       <Button title="Click Me" onPress={fetchBooks} />
-      <SearchBar />
+      <SearchBar setQuery={setQuery} />
 
       <FlatList
         data={books}
-        renderItem={({item}) => <ListItem book={item.volumeInfo} />}
+        renderItem={({item}) => (
+          <ListItem key={item.id} book={item.volumeInfo} />
+        )}
       />
     </View>
   );

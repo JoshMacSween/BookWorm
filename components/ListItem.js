@@ -3,7 +3,6 @@ import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 export default function ListItem({book}) {
-  console.log(book);
   return (
     <TouchableOpacity style={styles.listItem}>
       <View style={styles.listItemView}>
