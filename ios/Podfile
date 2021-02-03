@@ -8,6 +8,7 @@ target 'BookWorm' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+
   target 'BookWormTests' do
     inherit! :complete
     # Pods for testing

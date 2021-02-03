@@ -1,6 +1,7 @@
 /* eslint-disable no-labels */
 /* eslint-disable react-native/no-inline-styles */
 import 'react-native-gesture-handler';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 import React, {useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -48,39 +49,41 @@ function ProfileStackScreen() {
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator
-        screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) => {
-            let iconName;
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Tab.Navigator
+          screenOptions={({route}) => ({
+            tabBarIcon: ({focused, color, size}) => {
+              let iconName;
 
-            if (route.name === 'Home') {
-              iconName = focused ? faInfoCircle : faSlidersH;
-            } else if (route.name === 'Profile') {
-              iconName = focused ? faInfoCircle : faSlidersH;
-            }
+              if (route.name === 'Home') {
+                iconName = focused ? faInfoCircle : faSlidersH;
+              } else if (route.name === 'Profile') {
+                iconName = focused ? faInfoCircle : faSlidersH;
+              }
 
-            return (
-              <FontAwesomeIcon icon={iconName} size={size} color={color} />
-            );
-          },
-        })}
-        tabBarOptions={{
-          activeTintColor: 'tomato',
-          inactiveTintColor: 'gray',
-        }}>
-        <Tab.Screen
-          name="Home"
-          component={HomeStackScreen}
-          options={{tabBarLabel: 'Home!'}}
-        />
-        <Tab.Screen
-          name="Profile"
-          component={ProfileStackScreen}
-          options={{tabBarLabel: 'Profile!'}}
-        />
-      </Tab.Navigator>
-    </NavigationContainer>
+              return (
+                <FontAwesomeIcon icon={iconName} size={size} color={color} />
+              );
+            },
+          })}
+          tabBarOptions={{
+            activeTintColor: 'darkslateblue',
+            inactiveTintColor: 'gray',
+          }}>
+          <Tab.Screen
+            name="Home"
+            component={HomeStackScreen}
+            options={{tabBarLabel: 'Home'}}
+          />
+          <Tab.Screen
+            name="Profile"
+            component={ProfileStackScreen}
+            options={{tabBarLabel: 'Settings'}}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 };
 

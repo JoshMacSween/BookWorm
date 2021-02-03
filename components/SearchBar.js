@@ -1,13 +1,11 @@
 import React, {useState} from 'react';
 import {View, Text, TextInput, StyleSheet} from 'react-native';
 
-export default function SearchBar({query, setQuery}) {
+export default function SearchBar({fetchBooks}) {
   return (
     <View>
       <TextInput
-        value={query}
-        name="query"
-        onChangeText={(text) => setQuery(text)}
+        onChangeText={(text) => fetchBooks(text)}
         placeholder="Search for books"
         style={styles.input}
       />

@@ -1,5 +1,5 @@
 import Header from './Header';
-import ListItem from './ListItem';
+import BookList from './BookList';
 import SearchBar from './SearchBar';
 
-export {Header, ListItem, SearchBar};
+export {Header, BookList, SearchBar};
