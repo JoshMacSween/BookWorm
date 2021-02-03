@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react';
 import {View, Text, Button, FlatList, StyleSheet, Alert} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faJedi} from '@fortawesome/free-solid-svg-icons';
-import {BookList, SearchBar} from '../components';
+import {BookCard, SearchBar} from '../components';
 import GOOGLE_API_KEY from '../key';
 import axios from 'axios';
 
@@ -27,7 +27,12 @@ export default function HomeScreen({navigation}) {
       <FlatList
         data={books}
         renderItem={({item}) => (
-          <BookList key={item.id} book={item.volumeInfo} />
+          <BookCard
+            key={item.id}
+            bookId={item.id}
+            book={item.volumeInfo}
+            navigation={navigation}
+          />
         )}
       />
     </View>

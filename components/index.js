@@ -1,5 +1,5 @@
 import Header from './Header';
-import BookList from './BookList';
+import BookCard from './BookCard';
 import SearchBar from './SearchBar';
 
-export {Header, BookList, SearchBar};
+export {Header, BookCard, SearchBar};

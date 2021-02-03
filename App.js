@@ -25,6 +25,7 @@ import {
 } from 'react-native';
 import Header from './components/Header';
 import HomeScreen from './screens/HomeScreen';
+import DetailsScreen from './screens/DetailsScreen';
 import ProfileScreen from './screens/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
@@ -35,15 +36,16 @@ function HomeStackScreen() {
   return (
     <HomeStack.Navigator>
       <HomeStack.Screen name="Home" component={HomeScreen} />
+      <HomeStack.Screen name="Details" component={DetailsScreen} />
     </HomeStack.Navigator>
   );
 }
 
 function ProfileStackScreen() {
   return (
-    <HomeStack.Navigator>
-      <HomeStack.Screen name="Home" component={ProfileScreen} />
-    </HomeStack.Navigator>
+    <ProfileStack.Navigator>
+      <ProfileStack.Screen name="Home" component={ProfileScreen} />
+    </ProfileStack.Navigator>
   );
 }
 
