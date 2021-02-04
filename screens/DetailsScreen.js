@@ -1,8 +1,17 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useLayoutEffect, useState} from 'react';
-import {View, Text, Button, ActivityIndicator, StyleSheet} from 'react-native';
+import {
+  View,
+  Text,
+  Button,
+  ActivityIndicator,
+  StyleSheet,
+  Alert,
+  ScrollView,
+  SafeAreaView,
+} from 'react-native';
 
-import {Card, Image, ListItem} from 'react-native-elements';
+import {Card, ListItem, Image} from 'react-native-elements';
 import axios from 'axios';
 
 export default function DetailsScreen({route}) {
@@ -20,36 +29,56 @@ export default function DetailsScreen({route}) {
     fetchDetails();
   }, []);
 
-  const {title, authors, description, imageLinks} = details;
+  const {
+    title,
+    authors,
+    description,
+    averageRating,
+    // imageLinks: {smallThumbnail},
+  } = details;
+
+  // console.log(smallThumbnail);
 
   return (
     <Card>
-      {/* <Image
-        source={{uri: imageLinks.smallThumbnail}}
+      {/* <Card.Image
+        source={{
+          uri: smallThumbnail,
+        }}
         style={{width: 200, height: 200}}
       /> */}
-      <Card.Title>{title}</Card.Title>
+
+      <Card.Title style={styles.title}>{title}</Card.Title>
       <Card.Divider />
       <ListItem bottomDivider>
         <ListItem.Content>
-          <ListItem.Title style={styles.title}>
+          <ListItem.Title style={styles.content}>
             Author: {authors}
           </ListItem.Title>
         </ListItem.Content>
       </ListItem>
       <ListItem bottomDivider>
         <ListItem.Content>
-          <ListItem.Title style={styles.descriptionTitle}>
-            Description
+          <ListItem.Title style={styles.content}>
+            Rating: {averageRating}/5
           </ListItem.Title>
-          <ListItem.Subtitle>{description}</ListItem.Subtitle>
         </ListItem.Content>
       </ListItem>
+      <Text style={styles.descriptionHeader}>Description</Text>
+      <Text style={styles.description}>{description}</Text>
     </Card>
   );
 }
 
 const styles = StyleSheet.create({
-  title: {},
-  descriptionTitle: {},
+  title: {fontSize: 24, color: 'darkslateblue'},
+  content: {fontSize: 20},
+  description: {fontSize: 18, paddingTop: 5},
+  descriptionHeader: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    textAlign: 'center',
+    paddingTop: 15,
+    color: 'darkslateblue',
+  },
 });
