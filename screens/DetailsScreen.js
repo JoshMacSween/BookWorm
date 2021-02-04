@@ -9,10 +9,12 @@ import {
   Alert,
   ScrollView,
   SafeAreaView,
+  useWindowDimensions,
 } from 'react-native';
 
 import {Card, ListItem, Image} from 'react-native-elements';
 import axios from 'axios';
+import HTML from 'react-native-render-html';
 
 export default function DetailsScreen({route}) {
   const [details, setDetails] = useState([]);
@@ -38,35 +40,45 @@ export default function DetailsScreen({route}) {
   } = details;
 
   // console.log(smallThumbnail);
+  const contentWidth = useWindowDimensions().width;
+  const htmlContent = description;
 
   return (
-    <Card>
-      {/* <Card.Image
+    <ScrollView style={{flex: 1}}>
+      <Card>
+        {/* <Card.Image
         source={{
           uri: smallThumbnail,
         }}
         style={{width: 200, height: 200}}
       /> */}
 
-      <Card.Title style={styles.title}>{title}</Card.Title>
-      <Card.Divider />
-      <ListItem bottomDivider>
-        <ListItem.Content>
-          <ListItem.Title style={styles.content}>
-            Author: {authors}
-          </ListItem.Title>
-        </ListItem.Content>
-      </ListItem>
-      <ListItem bottomDivider>
-        <ListItem.Content>
-          <ListItem.Title style={styles.content}>
-            Rating: {averageRating}/5
-          </ListItem.Title>
-        </ListItem.Content>
-      </ListItem>
-      <Text style={styles.descriptionHeader}>Description</Text>
-      <Text style={styles.description}>{description}</Text>
-    </Card>
+        <Card.Title style={styles.title}>{title}</Card.Title>
+        <Card.Divider />
+        <ListItem bottomDivider>
+          <ListItem.Content>
+            <ListItem.Title style={styles.content}>
+              Author: {authors}
+            </ListItem.Title>
+          </ListItem.Content>
+        </ListItem>
+        <ListItem bottomDivider>
+          <ListItem.Content>
+            <ListItem.Title style={styles.content}>
+              Rating: {averageRating}/5
+            </ListItem.Title>
+          </ListItem.Content>
+        </ListItem>
+        <Text style={styles.descriptionHeader}>Description</Text>
+        <HTML
+          source={{html: htmlContent}}
+          contentWidth={contentWidth}
+          baseFontStyle={{
+            fontSize: 18,
+          }}
+        />
+      </Card>
+    </ScrollView>
   );
 }
 
