@@ -8,18 +8,21 @@ export const BooksContext = createContext();
 export default function BooksProvider(props) {
   const [books, setBooks] = useState('');
 
-  const fetchBooks = () => {
-    const result = axios.get(
-      `https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=${GOOGLE_API_KEY}`,
-    );
-    setBooks(result.data);
-  };
+  async function fetchBooks(q) {
+    const result = await axios
+      .get(
+        `https://www.googleapis.com/books/v1/volumes?q=${q}&key=${GOOGLE_API_KEY}`,
+      )
+      .then((response) => {
+        setBooks(response.data.items);
+      });
+  }
 
   return (
     <BooksContext.Provider
       value={{
         books,
-        // fetchBooks,
+        fetchBooks,
       }}>
       {props.children}
     </BooksContext.Provider>

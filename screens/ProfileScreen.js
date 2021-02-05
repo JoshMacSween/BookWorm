@@ -45,8 +45,6 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: 'darkslateblue',
-
-
     borderRadius: 5,
   },
 });

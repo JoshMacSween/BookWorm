@@ -1,16 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {useEffect, useLayoutEffect, useState} from 'react';
-import {
-  View,
-  Text,
-  Button,
-  ActivityIndicator,
-  StyleSheet,
-  Alert,
-  ScrollView,
-  SafeAreaView,
-  useWindowDimensions,
-} from 'react-native';
+import {Text, StyleSheet, ScrollView, useWindowDimensions} from 'react-native';
 
 import {Card, ListItem, Image} from 'react-native-elements';
 import axios from 'axios';

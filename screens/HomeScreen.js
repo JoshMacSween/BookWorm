@@ -1,24 +1,26 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState, useEffect} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import {View, Text, Button, FlatList, StyleSheet, Alert} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faJedi} from '@fortawesome/free-solid-svg-icons';
 import {BookCard, SearchBar} from '../components';
 import GOOGLE_API_KEY from '../key';
+import {BooksContext} from '../contexts/BooksProvider';
 import axios from 'axios';
 
 export default function HomeScreen({navigation}) {
-  const [books, setBooks] = useState([]);
+  const {fetchBooks, books} = useContext(BooksContext);
+  // const [books, setBooks] = useState([]);
 
-  async function fetchBooks(q) {
-    const result = await axios
-      .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${q}&key=${GOOGLE_API_KEY}`,
-      )
-      .then((response) => {
-        setBooks(response.data.items);
-      });
-  }
+  // async function fetchBooks(q) {
+  //   const result = await axios
+  //     .get(
+  //       `https://www.googleapis.com/books/v1/volumes?q=${q}&key=${GOOGLE_API_KEY}`,
+  //     )
+  //     .then((response) => {
+  //       setBooks(response.data.items);
+  //     });
+  // }
 
   return (
     <View style={styles.center}>
