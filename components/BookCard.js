@@ -2,10 +2,12 @@ import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import {Card} from 'react-native-elements';
 
-export default function BookCard({book, bookId, navigation}) {
+export default function BookCard({book, bookId, navigation, thumbnail}) {
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('Details', {bookId: bookId})}>
+      onPress={() =>
+        navigation.navigate('Details', {bookId: bookId, thumbnail: thumbnail})
+      }>
       <Card>
         {book && book.title ? (
           <View>

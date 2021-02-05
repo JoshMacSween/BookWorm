@@ -9,6 +9,7 @@ import HTML from 'react-native-render-html';
 export default function DetailsScreen({route}) {
   const [details, setDetails] = useState([]);
   const [volumeId, setVolumeId] = useState(route.params.bookId);
+  const [thumbnail, setThumbnail] = useState(route.params.thumbnail);
 
   useEffect(() => {
     const fetchDetails = async () => {
@@ -35,13 +36,20 @@ export default function DetailsScreen({route}) {
 
   return (
     <ScrollView style={{flex: 1}}>
+      {/* <Text>{thumbnail}</Text> */}
       <Card>
-        {/* <Card.Image
-        source={{
-          uri: smallThumbnail,
-        }}
-        style={{width: 200, height: 200}}
-      /> */}
+        <Card.Image
+          source={{
+            uri: thumbnail,
+          }}
+          style={{
+            width: 300,
+            height: 300,
+            marginHorizontal: 30,
+            borderRadius: 10,
+            marginBottom: 15,
+          }}
+        />
 
         <Card.Title style={styles.title}>{title}</Card.Title>
         <Card.Divider />
@@ -81,6 +89,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     paddingTop: 15,
+    marginBottom: 15,
     color: 'darkslateblue',
   },
 });

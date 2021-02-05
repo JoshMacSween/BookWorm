@@ -33,6 +33,7 @@ export default function HomeScreen({navigation}) {
             key={item.id}
             bookId={item.id}
             book={item.volumeInfo}
+            thumbnail={item.volumeInfo.imageLinks.smallThumbnail}
             navigation={navigation}
           />
         )}
