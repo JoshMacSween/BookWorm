@@ -3,18 +3,19 @@ import {View, Text, TextInput, StyleSheet} from 'react-native';
 
 export default function SearchBar({fetchBooks}) {
   return (
-    <View>
+    <View style={styles.inputContainer}>
       <TextInput
         onChangeText={(text) => fetchBooks(text)}
-        placeholder="Search for books"
         style={styles.input}
+        placeholder="Search for books"
+        placeholderTextColor="darkslateblue"
       />
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  input: {
+  inputContainer: {
     marginTop: 10,
     backgroundColor: 'gainsboro',
     borderRadius: 8,
@@ -22,5 +23,10 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: 'darkslateblue',
     fontWeight: 'bold',
+  },
+  input: {
+    color: 'darkslateblue',
+    fontWeight: 'bold',
+    fontSize: 18,
   },
 });
