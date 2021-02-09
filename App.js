@@ -26,7 +26,7 @@ import {
 import Header from './components/Header';
 import HomeScreen from './screens/HomeScreen';
 import DetailsScreen from './screens/DetailsScreen';
-import ProfileScreen from './screens/ProfileScreen';
+import SignupScreen from './screens/SignupScreen';
 
 const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
@@ -44,7 +44,7 @@ function HomeStackScreen() {
 function ProfileStackScreen() {
   return (
     <ProfileStack.Navigator>
-      <ProfileStack.Screen name="Home" component={ProfileScreen} />
+      <ProfileStack.Screen name="SignUp" component={SignupScreen} />
     </ProfileStack.Navigator>
   );
 }

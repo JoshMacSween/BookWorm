@@ -5,7 +5,7 @@ import {faEnvelope, faLock} from '@fortawesome/free-solid-svg-icons';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Card, ListItem, Input, Button} from 'react-native-elements';
 
-export default function ProfileScreen({navigation, route}) {
+export default function SignupScreen({navigation, route}) {
   return (
     <View style={styles.container}>
       <Text style={styles.inputHeading}>Sign Up</Text>
@@ -14,13 +14,13 @@ export default function ProfileScreen({navigation, route}) {
         autoFocus={true}
         placeholder="Email"
         type="email"
-        leftIcon={<FontAwesomeIcon icon={faEnvelope} />}
+        leftIcon={<FontAwesomeIcon icon={faEnvelope} style={styles.icon} />}
       />
       <Input
         placeholder="Password"
         type="password"
         secureTextEntry={true}
-        leftIcon={<FontAwesomeIcon icon={faLock} />}
+        leftIcon={<FontAwesomeIcon icon={faLock} style={styles.icon} />}
       />
       <Button buttonStyle={styles.button} title="Submit" onPress={() => {}} />
     </View>
@@ -46,5 +46,8 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: 'darkslateblue',
     borderRadius: 5,
+  },
+  icon: {
+    marginRight: 5,
   },
 });
