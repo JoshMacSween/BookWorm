@@ -2,14 +2,12 @@ import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import {faEnvelope, faLock} from '@fortawesome/free-solid-svg-icons';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {Card, ListItem, Input, Button} from 'react-native-elements';
+import {Input, Button} from 'react-native-elements';
 
 export default function SignupScreen({navigation, route}) {
   return (
     <View style={styles.container}>
       <Text style={styles.inputHeading}>Sign Up</Text>
-
       <Input
         autoFocus={true}
         placeholder="Email"

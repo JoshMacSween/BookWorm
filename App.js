@@ -9,21 +9,8 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {FontAwesomeIcon} from '@fortawesome/react-native-fontawesome';
 import BooksProvider from './contexts/BooksProvider';
 
-import {
-  faTimes,
-  faInfoCircle,
-  faSlidersH,
-} from '@fortawesome/free-solid-svg-icons';
+import {faInfoCircle, faSlidersH} from '@fortawesome/free-solid-svg-icons';
 
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  Button,
-  Image,
-} from 'react-native';
-import Header from './components/Header';
 import HomeScreen from './screens/HomeScreen';
 import DetailsScreen from './screens/DetailsScreen';
 import SignupScreen from './screens/SignupScreen';
